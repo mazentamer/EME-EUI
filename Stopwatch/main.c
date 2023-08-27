@@ -3,11 +3,11 @@
 /**
  * main.c
  */
+#include <APP/Stopwatch_Interface.h>
 #include "MCAL/SYSTICK.h"
 #include "MCAL/DIO.h"
 #include "HAL/LCD_Interface.h"
 #include "HAL/Keypad_Interface.h"
-#include "APP/Stopwatch.h"
 
 
 int main(void)
