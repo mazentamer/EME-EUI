@@ -1,0 +1,8 @@
+"./main.obj"
+"./tm4c123gh6pm_startup_ccs.obj"
+"./HAL/Keypad.obj"
+"./HAL/LCD.obj"
+"./MCAL/DIO.obj"
+"./MCAL/SYSTICK.obj"
+"../tm4c123gh6pm.cmd"
+-llibc.a
