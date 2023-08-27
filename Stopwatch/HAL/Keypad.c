@@ -9,6 +9,7 @@
 #include <HAL/Keypad_Interface.h>
 
 static void delay(uint32 ms);
+uint8 key = 0xFF;
 
 uint8 keypad_buttons[4][4] = {
                               {1,2,3,'+'},
@@ -24,26 +25,14 @@ void Keypad_init(void)
     DIO_init(KEYPAD_COL_PORT);
 
     DIO_SetPortDirection(KEYPAD_ROW_PORT, 0x1E);
-    //    DIO_SetPinDirection(KEYPAD_ROW_PORT, KEYPAD_R0_PIN, OUTPUT);
-    //    DIO_SetPinDirection(KEYPAD_ROW_PORT, KEYPAD_R1_PIN, OUTPUT);
-    //    DIO_SetPinDirection(KEYPAD_ROW_PORT, KEYPAD_R2_PIN, OUTPUT);
-    //    DIO_SetPinDirection(KEYPAD_ROW_PORT, KEYPAD_R3_PIN, OUTPUT);
 
     DIO_SetPortDirection(KEYPAD_COL_PORT, 0x00);
-    //    DIO_SetPinDirection(KEYPAD_COL_PORT, KEYPAD_C0_PIN, INPUT);
-    //    DIO_SetPinDirection(KEYPAD_COL_PORT, KEYPAD_C1_PIN, INPUT);
-    //    DIO_SetPinDirection(KEYPAD_COL_PORT, KEYPAD_C2_PIN, INPUT);
-    //    DIO_SetPinDirection(KEYPAD_COL_PORT, KEYPAD_C3_PIN, INPUT);
 
     DIO_SetResistorMode(KEYPAD_COL_PORT, KEYPAD_C0_PIN, PULL_UP);
     DIO_SetResistorMode(KEYPAD_COL_PORT, KEYPAD_C1_PIN, PULL_UP);
     DIO_SetResistorMode(KEYPAD_COL_PORT, KEYPAD_C2_PIN, PULL_UP);
     DIO_SetResistorMode(KEYPAD_COL_PORT, KEYPAD_C3_PIN, PULL_UP);
 
-    //    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R0_PIN, HIGH);
-    //    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R1_PIN, HIGH);
-    //    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R2_PIN, HIGH);
-    //    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R3_PIN, HIGH);
     DIO_WritePin(PORTE, BIT1, LOW);
     DIO_WritePin(PORTE, BIT2, LOW);
     DIO_WritePin(PORTE, BIT3, LOW);
@@ -68,6 +57,134 @@ uint8 Keypad_CheckButton(void)
         DIO_WritePin(KEYPAD_ROW_PORT, ((uint8)FIRST_ROW + iter_row), HIGH);
     }
     return buttonPressed;
+}
+
+void Keypad_InterruptButton(void)
+{
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R0_PIN, LOW);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R1_PIN, HIGH);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R2_PIN, HIGH);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R3_PIN, HIGH);
+
+    if ((GPIO_PORTA_DATA_R & 0x10) == 0)
+    {
+        key = 1;
+        LCD_WriteNumber(key);
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x20) == 0)
+    {
+        key = 2;
+        LCD_WriteNumber(key);
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x40) == 0)
+    {
+        key = 3;
+        LCD_WriteNumber(key);
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x80) == 0)
+    {
+        key = '+';
+        LCD_WriteChar(key);
+    }
+
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R0_PIN, HIGH);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R1_PIN, LOW);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R2_PIN, HIGH);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R3_PIN, HIGH);
+
+    if ((GPIO_PORTA_DATA_R & 0x10) == 0)
+    {
+        key = 4;
+        LCD_WriteNumber(key);
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x20) == 0)
+    {
+        key = 5;
+        LCD_WriteNumber(key);
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x40) == 0)
+    {
+        key = 6;
+        LCD_WriteNumber(key);
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x80) == 0)
+    {
+        key = '-';
+        LCD_WriteChar(key);
+    }
+
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R0_PIN, HIGH);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R1_PIN, HIGH);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R2_PIN, LOW);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R3_PIN, HIGH);
+
+    if ((GPIO_PORTA_DATA_R & 0x10) == 0)
+    {
+        key = 7;
+        LCD_WriteNumber(key);
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x20) == 0)
+    {
+        key = 8;
+        LCD_WriteNumber(key);
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x40) == 0)
+    {
+        key = 9;
+        LCD_WriteNumber(key);
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x80) == 0)
+    {
+        key = '/';
+        LCD_WriteChar(key);
+    }
+
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R0_PIN, HIGH);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R1_PIN, HIGH);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R2_PIN, HIGH);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R3_PIN, LOW);
+
+    if ((GPIO_PORTA_DATA_R & 0x10) == 0)
+    {
+        key = 'C';
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x20) == 0)
+    {
+        key = 0;
+        LCD_WriteChar('0');
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x40) == 0)
+    {
+        key = '=';
+        LCD_WriteChar(key);
+    }
+    else if ((GPIO_PORTA_DATA_R & 0x80) == 0)
+    {
+        key = '*';
+        LCD_WriteChar(key);
+    }
+
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R0_PIN, LOW);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R1_PIN, LOW);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R2_PIN, LOW);
+    DIO_WritePin(KEYPAD_ROW_PORT, KEYPAD_R3_PIN, LOW);
+
+    if (GPIO_PORTA_MIS_R & 0x10)
+    {
+        GPIO_PORTA_ICR_R |= 0x10;
+    }
+    else if (GPIO_PORTA_MIS_R & 0x20)
+    {
+        GPIO_PORTA_ICR_R |= 0x20;
+    }
+    else if (GPIO_PORTA_MIS_R & 0x40)
+    {
+        GPIO_PORTA_ICR_R |= 0x40;
+    }
+    else if (GPIO_PORTA_MIS_R & 0x80)
+    {
+        GPIO_PORTA_ICR_R |= 0x80;
+    }
 }
 
 static void delay(uint32 ms)

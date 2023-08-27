@@ -10,8 +10,9 @@
 
 #include "Libraries/Std_types.h"
 
-//void SYSTICK_init(uint32 value);
 void SYSTICK_delayMS(uint32 ms);
 void SYSTICK_delaySEC(void);
+void SYSTICK_setInterruptCallback(void(*cb_function)(void));
+void SYSTICK_stopCounter(void);
 
 #endif /* MCAL_SYSTICK_H_ */

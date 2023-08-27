@@ -14,6 +14,7 @@
 
 void Keypad_init(void);
 uint8 Keypad_CheckButton(void);
+void Keypad_InterruptButton(void);
 
 
 #endif /* HAL_KEYPAD_INTERFACE_H_ */

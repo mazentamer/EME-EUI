@@ -1,32 +1,32 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.7                     
 ******************************************************************************
->> Linked Sat Aug 26 09:46:58 2023
+>> Linked Sun Aug 27 15:35:27 2023
 
 OUTPUT FILE NAME:   <Stopwatch.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000017e1
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00001839
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  000018b2  0003e74e  R  X
-  SRAM                  20000000   00008000  0000024b  00007db5  RW X
+  FLASH                 00000000   00040000  0000190a  0003e6f6  R  X
+  SRAM                  20000000   00008000  0000024f  00007db1  RW X
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    000018b8   000018b8    r-x
+00000000    00000000    00001910   00001910    r-x
   00000000    00000000    0000026c   0000026c    r-- .intvecs
-  0000026c    0000026c    000015e6   000015e6    r-x .text
-  00001858    00001858    00000060   00000060    r-- .cinit
-20000000    20000000    0000024e   00000000    rw-
+  0000026c    0000026c    0000163e   0000163e    r-x .text
+  000018b0    000018b0    00000060   00000060    r-- .cinit
+20000000    20000000    00000252   00000000    rw-
   20000000    20000000    00000200   00000000    rw- .stack
   20000200    20000200    00000031   00000000    rw- .data
-  20000234    20000234    0000001a   00000000    rw- .bss
+  20000234    20000234    0000001e   00000000    rw- .bss
 
 
 SECTION ALLOCATION MAP
@@ -37,28 +37,29 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    0000026c     
                   00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
 
-.text      0    0000026c    000015e6     
-                  0000026c    000009dc     DIO.obj (.text)
-                  00000c48    000005b8     main.obj (.text)
-                  00001200    000002dc     LCD.obj (.text)
-                  000014dc    00000144     Keypad.obj (.text)
-                  00001620    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
-                  000016bc    00000078     SYSTICK.obj (.text)
-                  00001734    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  0000179c    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
-                  000017e0    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
-                  00001814    0000001c                                   : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  00001830    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  0000183e    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
-                  0000184a    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  0000184e    00000004                                   : exit.c.obj (.text:abort:abort)
+.text      0    0000026c    0000163e     
+                  0000026c    000009fc     DIO.obj (.text)
+                  00000c68    000003dc     Keypad.obj (.text)
+                  00001044    000002dc     LCD.obj (.text)
+                  00001320    000002c4     Stopwatch.obj (.text)
+                  000015e4    000000a8     SYSTICK.obj (.text)
+                  0000168c    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00001728    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00001790    00000064     main.obj (.text)
+                  000017f4    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00001838    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  0000186c    0000001c                                   : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00001888    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00001896    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  000018a2    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  000018a6    00000004                                   : exit.c.obj (.text:abort:abort)
 
-.cinit     0    00001858    00000060     
-                  00001858    00000039     (.cinit..data.load) [load image]
-                  00001891    00000003     --HOLE-- [fill = 0]
-                  00001894    0000000c     (__TI_handler_table)
-                  000018a0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  000018a8    00000010     (__TI_cinit_table)
+.cinit     0    000018b0    00000060     
+                  000018b0    00000039     (.cinit..data.load) [load image]
+                  000018e9    00000003     --HOLE-- [fill = 0]
+                  000018ec    0000000c     (__TI_handler_table)
+                  000018f8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00001900    00000010     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -66,12 +67,13 @@ section   page    origin      length       input sections
 .data      0    20000200    00000031     UNINITIALIZED
                   20000200    00000020     LCD.obj (.data:positions)
                   20000220    00000010     Keypad.obj (.data:keypad_buttons)
-                  20000230    00000001     main.obj (.data)
+                  20000230    00000001     Keypad.obj (.data)
 
-.bss       0    20000234    0000001a     UNINITIALIZED
+.bss       0    20000234    0000001e     UNINITIALIZED
                   20000234    00000018     (.common:stopwatch)
-                  2000024c    00000001     (.common:lap_flag)
-                  2000024d    00000001     (.common:start_flag)
+                  2000024c    00000004     (.common:ptr_fun)
+                  20000250    00000001     (.common:lap_flag)
+                  20000251    00000001     (.common:start_flag)
 
 .stack     0    20000000    00000200     UNINITIALIZED
                   20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
@@ -85,22 +87,27 @@ MODULE SUMMARY
        Module                         code   ro data   rw data
        ------                         ----   -------   -------
     .\
-       main.obj                       1464   0         27     
        tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       main.obj                       100    0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         1476   620       27     
+       Total:                         112    620       0      
+                                                              
+    .\APP\
+       Stopwatch.obj                  708    0         26     
+    +--+------------------------------+------+---------+---------+
+       Total:                         708    0         26     
                                                               
     .\HAL\
+       Keypad.obj                     988    0         17     
        LCD.obj                        732    0         32     
-       Keypad.obj                     324    0         16     
     +--+------------------------------+------+---------+---------+
-       Total:                         1056   0         48     
+       Total:                         1720   0         49     
                                                               
     .\MCAL\
-       DIO.obj                        2524   0         0      
-       SYSTICK.obj                    120    0         0      
+       DIO.obj                        2556   0         4      
+       SYSTICK.obj                    168    0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         2644   0         0      
+       Total:                         2724   0         4      
                                                               
     C:\ti\ccs1230\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        memcpy_t2.asm.obj              156    0         0      
@@ -117,19 +124,19 @@ MODULE SUMMARY
        Stack:                         0      0         512    
        Linker Generated:              0      93        0      
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   5606   713       587    
+       Grand Total:                   5694   713       591    
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 000018a8 records: 2, size/record: 8, table size: 16
-	.data: load addr=00001858, load size=00000039 bytes, run addr=20000200, run size=00000031 bytes, compression=copy
-	.bss: load addr=000018a0, load size=00000008 bytes, run addr=20000234, run size=0000001a bytes, compression=zero_init
+__TI_cinit_table @ 00001900 records: 2, size/record: 8, table size: 16
+	.data: load addr=000018b0, load size=00000039 bytes, run addr=20000200, run size=00000031 bytes, compression=copy
+	.bss: load addr=000018f8, load size=00000008 bytes, run addr=20000234, run size=0000001e bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00001894 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 000018ec records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
@@ -139,69 +146,76 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address   name                          
 -------   ----                          
-0000184f  C$$EXIT                       
+000018a7  C$$EXIT                       
 00000a09  DIO_EnableInterrupt           
 000004b7  DIO_ReadPin                   
 00000575  DIO_ReadPort                  
+00000bf5  DIO_SetInterruptCallback      
 0000060d  DIO_SetPinDirection           
 000007cf  DIO_SetPortDirection          
 00000871  DIO_SetResistorMode           
 0000044b  DIO_WritePORT                 
 000002d9  DIO_WritePin                  
 0000026d  DIO_init                      
-00000f61  GPIOA_Handler                 
-0000154d  Keypad_CheckButton            
-000014dd  Keypad_init                   
-00001431  LCD_ClearScreen               
-0000132d  LCD_GoTo                      
-00001201  LCD_Init                      
-0000126b  LCD_WriteChar                 
-0000145f  LCD_WriteData                 
-00001351  LCD_WriteFloatNumber          
-0000149b  LCD_WriteInstruction          
-0000127b  LCD_WriteNumber               
-00001245  LCD_WriteString               
-0000183f  ResetISR                      
-000016bd  SYSTICK_delayMS               
-000016f9  SYSTICK_delaySEC              
-00000e83  Systick_Handler               
+00000c05  GPIOA_Handler                 
+00000cd9  Keypad_CheckButton            
+00000d83  Keypad_InterruptButton        
+00000c69  Keypad_init                   
+00001275  LCD_ClearScreen               
+00001171  LCD_GoTo                      
+00001045  LCD_Init                      
+000010af  LCD_WriteChar                 
+000012a3  LCD_WriteData                 
+00001195  LCD_WriteFloatNumber          
+000012df  LCD_WriteInstruction          
+000010bf  LCD_WriteNumber               
+00001089  LCD_WriteString               
+00001897  ResetISR                      
+000015e5  SYSTICK_delayMS               
+00001621  SYSTICK_delaySEC              
+0000165f  SYSTICK_setInterruptCallback  
+0000164d  SYSTICK_stopCounter           
+00001509  StopwatchCount                
+00001321  StopwatchInit                 
+0000166f  Systick_Handler               
 20000200  __STACK_END                   
 00000200  __STACK_SIZE                  
 20000200  __STACK_TOP                   
-000018a8  __TI_CINIT_Base               
-000018b8  __TI_CINIT_Limit              
-00001894  __TI_Handler_Table_Base       
-000018a0  __TI_Handler_Table_Limit      
-0000179d  __TI_auto_init_nobinit_nopinit
-00001735  __TI_decompress_lzss          
-00001831  __TI_decompress_none          
+00001900  __TI_CINIT_Base               
+00001910  __TI_CINIT_Limit              
+000018ec  __TI_Handler_Table_Base       
+000018f8  __TI_Handler_Table_Limit      
+000017f5  __TI_auto_init_nobinit_nopinit
+00001729  __TI_decompress_lzss          
+00001889  __TI_decompress_none          
 ffffffff  __TI_pprof_out_hndl           
 ffffffff  __TI_prof_data_size           
 ffffffff  __TI_prof_data_start          
 00000000  __TI_static_base__            
-00001815  __TI_zero_init_nomemset       
-00001621  __aeabi_memcpy                
-00001621  __aeabi_memcpy4               
-00001621  __aeabi_memcpy8               
+0000186d  __TI_zero_init_nomemset       
+0000168d  __aeabi_memcpy                
+0000168d  __aeabi_memcpy4               
+0000168d  __aeabi_memcpy8               
 ffffffff  __binit__                     
 ffffffff  __c_args__                    
 UNDEFED   __mpu_init                    
 20000000  __stack                       
 20000000  __start___llvm_prf_cnts       
 20000000  __stop___llvm_prf_cnts        
-000017e1  _c_int00_noargs               
+00001839  _c_int00_noargs               
 UNDEFED   _system_post_cinit            
-0000184b  _system_pre_init              
-0000184f  abort                         
+000018a3  _system_pre_init              
+000018a7  abort                         
 ffffffff  binit                         
 00000000  g_pfnVectors                  
 20000230  key                           
 20000220  keypad_buttons                
-2000024c  lap_flag                      
-00000c49  main                          
-00001621  memcpy                        
+20000250  lap_flag                      
+00001791  main                          
+0000168d  memcpy                        
 20000200  positions                     
-2000024d  start_flag                    
+2000024c  ptr_fun                       
+20000251  start_flag                    
 20000234  stopwatch                     
 
 
@@ -221,39 +235,45 @@ address   name
 000007cf  DIO_SetPortDirection          
 00000871  DIO_SetResistorMode           
 00000a09  DIO_EnableInterrupt           
-00000c49  main                          
-00000e83  Systick_Handler               
-00000f61  GPIOA_Handler                 
-00001201  LCD_Init                      
-00001245  LCD_WriteString               
-0000126b  LCD_WriteChar                 
-0000127b  LCD_WriteNumber               
-0000132d  LCD_GoTo                      
-00001351  LCD_WriteFloatNumber          
-00001431  LCD_ClearScreen               
-0000145f  LCD_WriteData                 
-0000149b  LCD_WriteInstruction          
-000014dd  Keypad_init                   
-0000154d  Keypad_CheckButton            
-00001621  __aeabi_memcpy                
-00001621  __aeabi_memcpy4               
-00001621  __aeabi_memcpy8               
-00001621  memcpy                        
-000016bd  SYSTICK_delayMS               
-000016f9  SYSTICK_delaySEC              
-00001735  __TI_decompress_lzss          
-0000179d  __TI_auto_init_nobinit_nopinit
-000017e1  _c_int00_noargs               
-00001815  __TI_zero_init_nomemset       
-00001831  __TI_decompress_none          
-0000183f  ResetISR                      
-0000184b  _system_pre_init              
-0000184f  C$$EXIT                       
-0000184f  abort                         
-00001894  __TI_Handler_Table_Base       
-000018a0  __TI_Handler_Table_Limit      
-000018a8  __TI_CINIT_Base               
-000018b8  __TI_CINIT_Limit              
+00000bf5  DIO_SetInterruptCallback      
+00000c05  GPIOA_Handler                 
+00000c69  Keypad_init                   
+00000cd9  Keypad_CheckButton            
+00000d83  Keypad_InterruptButton        
+00001045  LCD_Init                      
+00001089  LCD_WriteString               
+000010af  LCD_WriteChar                 
+000010bf  LCD_WriteNumber               
+00001171  LCD_GoTo                      
+00001195  LCD_WriteFloatNumber          
+00001275  LCD_ClearScreen               
+000012a3  LCD_WriteData                 
+000012df  LCD_WriteInstruction          
+00001321  StopwatchInit                 
+00001509  StopwatchCount                
+000015e5  SYSTICK_delayMS               
+00001621  SYSTICK_delaySEC              
+0000164d  SYSTICK_stopCounter           
+0000165f  SYSTICK_setInterruptCallback  
+0000166f  Systick_Handler               
+0000168d  __aeabi_memcpy                
+0000168d  __aeabi_memcpy4               
+0000168d  __aeabi_memcpy8               
+0000168d  memcpy                        
+00001729  __TI_decompress_lzss          
+00001791  main                          
+000017f5  __TI_auto_init_nobinit_nopinit
+00001839  _c_int00_noargs               
+0000186d  __TI_zero_init_nomemset       
+00001889  __TI_decompress_none          
+00001897  ResetISR                      
+000018a3  _system_pre_init              
+000018a7  C$$EXIT                       
+000018a7  abort                         
+000018ec  __TI_Handler_Table_Base       
+000018f8  __TI_Handler_Table_Limit      
+00001900  __TI_CINIT_Base               
+00001910  __TI_CINIT_Limit              
 20000000  __stack                       
 20000000  __start___llvm_prf_cnts       
 20000000  __stop___llvm_prf_cnts        
@@ -263,8 +283,9 @@ address   name
 20000220  keypad_buttons                
 20000230  key                           
 20000234  stopwatch                     
-2000024c  lap_flag                      
-2000024d  start_flag                    
+2000024c  ptr_fun                       
+20000250  lap_flag                      
+20000251  start_flag                    
 ffffffff  __TI_pprof_out_hndl           
 ffffffff  __TI_prof_data_size           
 ffffffff  __TI_prof_data_start          
@@ -274,4 +295,4 @@ ffffffff  binit
 UNDEFED   __mpu_init                    
 UNDEFED   _system_post_cinit            
 
-[64 symbols]
+[71 symbols]

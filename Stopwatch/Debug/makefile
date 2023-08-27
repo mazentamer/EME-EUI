@@ -12,6 +12,7 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./main.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
+"./APP/Stopwatch.obj" \
 "./HAL/Keypad.obj" \
 "./HAL/LCD.obj" \
 "./MCAL/DIO.obj" \
@@ -28,9 +29,11 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include APP/subdir_vars.mk
 -include HAL/subdir_vars.mk
 -include MCAL/subdir_vars.mk
 -include subdir_rules.mk
+-include APP/subdir_rules.mk
 -include HAL/subdir_rules.mk
 -include MCAL/subdir_rules.mk
 -include objects.mk
@@ -143,15 +146,15 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 Stopwatch.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --check_misra="all,-19.4" -z -m"Stopwatch.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib" -i"C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Stopwatch_linkInfo.xml" --rom_model -o "Stopwatch.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Stopwatch.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib" -i"C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Stopwatch_linkInfo.xml" --rom_model -o "Stopwatch.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "HAL\Keypad.obj" "HAL\LCD.obj" "MCAL\DIO.obj" "MCAL\SYSTICK.obj" 
-	-$(RM) "main.d" "tm4c123gh6pm_startup_ccs.d" "HAL\Keypad.d" "HAL\LCD.d" "MCAL\DIO.d" "MCAL\SYSTICK.d" 
+	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "APP\Stopwatch.obj" "HAL\Keypad.obj" "HAL\LCD.obj" "MCAL\DIO.obj" "MCAL\SYSTICK.obj" 
+	-$(RM) "main.d" "tm4c123gh6pm_startup_ccs.d" "APP\Stopwatch.d" "HAL\Keypad.d" "HAL\LCD.d" "MCAL\DIO.d" "MCAL\SYSTICK.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

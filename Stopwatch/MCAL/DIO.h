@@ -73,5 +73,6 @@ void DIO_SetPinDirection(GPIO_PORT port, PORT_BIT bit, GPIO_IO io);
 void DIO_SetPortDirection(GPIO_PORT port, uint8 byte);
 void DIO_SetResistorMode(GPIO_PORT port, PORT_BIT bit, DIO_RESISTOR_MODE resistor);
 void DIO_EnableInterrupt(GPIO_PORT port, PORT_BIT bit, DIO_INTERRUPT_SENSE sense, DIO_EDGE edge);
+void DIO_SetInterruptCallback(void(*cb_function)(void));
 
 #endif

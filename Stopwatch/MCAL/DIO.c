@@ -1,5 +1,8 @@
 #include "DIO.h"
 
+void (*ptr_fun)(void);
+void GPIOA_Handler(void);
+
 void DIO_init(GPIO_PORT port)
 {
     SET_BIT(SYSCTL_RCGCGPIO_R, port);
@@ -397,4 +400,14 @@ void DIO_EnableInterrupt(GPIO_PORT port, PORT_BIT bit, DIO_INTERRUPT_SENSE sense
         NVIC_EN0_R |= (1 << 30);
         break;
     }
+}
+
+void DIO_SetInterruptCallback(void(*cb_function)(void))
+{
+    ptr_fun = cb_function;
+}
+
+void GPIOA_Handler(void)
+{
+    (*ptr_fun)();
 }
