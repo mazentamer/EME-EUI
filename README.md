@@ -8,7 +8,7 @@ This repository is created to document the projects and assignments throughout t
     * Edge-Time Mode Timer
     * PWM (Pulse Width Modulation)
 ## Team Members For Group Projects
-### Calculator Project (in Momen's repository)
+### Calculator Project (in [Momen's](https://github.com/momen-mohamed/EUI_TIVAC/tree/main/complex_calculator) repository)
 * Mazen Tamer (549)
 * Momen Mohamed (128)
 ### Simple Timer Projects
