@@ -4,7 +4,7 @@ This repository is created to document the projects and assignments throughout t
 1. Stopwatch Project (Solo)
 2. Simple Timer Projects (Group)
     * Periodic Timer
-    * One-Shot Timer
+    * Edge-Time Mode Timer
     * PWM (Pulse Width Modulation)
 ## Team Members For Group Projects
 *  Amira Sherif (752)
