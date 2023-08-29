@@ -6,42 +6,43 @@
 #include "MCAL/DIO.h"
 #include "MCAL/TIMER_Interface.h"
 
-void delay(uint32 ms);
+void delay(uint32 ms);      /*Software delay function for noticing the change in brightness of LED*/
 
 int main(void)
 {
-    Timer_PWM_Config(TIMER1, TIMERA_PORT1, TIMER1_PIN0, TIMERA, EDGE_COUNT, PERIODIC, NOT_INVERTED, 16000U);
+    /**********************Function for configuring any timer to be in PWM mode***********************/
+    Timer_PWM_Config(TIMER1, TIMERA_PORT1, TIMER1_PIN0, TIMERA, EDGE_COUNT, PERIODIC, NOT_INVERTED, 8000U);
 
-    uint16 test = 16000U;
-    uint8 flag = 0;
+    uint32 test = 8000U;    /*The variable that will be assigned to the match register for duty cycle change*/
+    uint8 flag = 0;         /*Flag for allowing for the brightness of the controlled LED to be smooth*/
 
     while (1)
     {
         if (flag == 0)
         {
-            test--;
+            test--;             /*Decrement the match register value*/
             if (test == 0)
             {
-                flag = 1;
+                flag = 1;       /*Raise flag to indicate value of variable has reached zero*/
             }
         }
         else
         {
-            test++;
-            if (test == 16000)
+            test++;             /*If the flag is set, this means that the variable is zero, starts incrementing*/
+            if (test == 8000)
             {
-                flag = 0;
+                flag = 0;       /*Lower the flag if variable has reached the interval load value*/
             }
         }
-        Timer_PWM_setDutyCycle(TIMER1, TIMERA, test);
-        delay(1);
+        Timer_PWM_setDutyCycle(TIMER1, TIMERA, test);   /*Function call for changing the duty cycle*/
+        delay(1);                                       /*Delay function to see effect of duty cycle change*/
     }
 }
 
 void delay(uint32 ms)
 {
     unsigned long volatile t;
-    t = 1524*ms;
+    t = 762*ms;
     while(t){
         t--;
     }

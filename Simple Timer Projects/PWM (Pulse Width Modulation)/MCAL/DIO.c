@@ -1,3 +1,17 @@
+/**********************************************************************************************************************
+ *  FILE DESCRIPTION
+ *  -------------------------------------------------------------------------------------------------------------------
+ *       Author:  Mazen Tamer
+ *         File:  DIO.c
+ *        Layer:  MCAL
+ *       Module:  GPIO
+ *      Version:  1.00
+ *
+ *  Description:  Implementation of GPIO Driver
+ *
+ *********************************************************************************************************************/
+
+
 #include "DIO.h"
 
 void DIO_init(GPIO_PORT port)
@@ -189,6 +203,7 @@ void DIO_SetPinDirection(GPIO_PORT port, PORT_BIT bit, GPIO_IO io)
         {
             CLEAR_BIT(GPIO_PORTB_DIR_R, bit);
         }
+        break;
     case PORTC:
         SET_BIT(GPIO_PORTC_DEN_R, bit);
         if (io == OUTPUT)
@@ -199,6 +214,7 @@ void DIO_SetPinDirection(GPIO_PORT port, PORT_BIT bit, GPIO_IO io)
         {
             CLEAR_BIT(GPIO_PORTC_DIR_R, bit);
         }
+        break;
     case PORTD:
         SET_BIT(GPIO_PORTD_DEN_R, bit);
         if (io == OUTPUT)
@@ -209,6 +225,7 @@ void DIO_SetPinDirection(GPIO_PORT port, PORT_BIT bit, GPIO_IO io)
         {
             CLEAR_BIT(GPIO_PORTD_DIR_R, bit);
         }
+        break;
     case PORTE:
         SET_BIT(GPIO_PORTE_DEN_R, bit);
         if (io == OUTPUT)
@@ -219,6 +236,7 @@ void DIO_SetPinDirection(GPIO_PORT port, PORT_BIT bit, GPIO_IO io)
         {
             CLEAR_BIT(GPIO_PORTE_DIR_R, bit);
         }
+        break;
     case PORTF:
         if (io == OUTPUT)
         {
@@ -229,6 +247,9 @@ void DIO_SetPinDirection(GPIO_PORT port, PORT_BIT bit, GPIO_IO io)
             CLEAR_BIT(GPIO_PORTF_DIR_R, bit);
         }
         SET_BIT(GPIO_PORTF_DEN_R, bit);
+        break;
+    default:
+        break;
     }
 }
 void DIO_SetPortDirection(GPIO_PORT port, uint8 byte)
@@ -398,3 +419,7 @@ void DIO_EnableInterrupt(GPIO_PORT port, PORT_BIT bit, DIO_INTERRUPT_SENSE sense
         break;
     }
 }
+
+/**********************************************************************************************************************
+ *  END OF FILE: DIO.c
+ *********************************************************************************************************************/

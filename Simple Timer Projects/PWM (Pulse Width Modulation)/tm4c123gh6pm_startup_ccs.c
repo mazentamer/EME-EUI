@@ -1,9 +1,9 @@
-//*****************************************************************************
-//
-// Startup code for use with TI's Code Composer Studio.
-//
-// Copyright (c) 2011-2014 Texas Instruments Incorporated.  All rights reserved.
-// Software License Agreement
+/******************************************************************************/
+
+/* Startup code for use with TI's Code Composer Studio. */
+
+/* Copyright (c) 2011-2014 Texas Instruments Incorporated.  All rights reserved. */
+/* Software License Agreement */
 // 
 // Software License Agreement
 //

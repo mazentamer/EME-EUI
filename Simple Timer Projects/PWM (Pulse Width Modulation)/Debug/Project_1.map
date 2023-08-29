@@ -1,17 +1,17 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.7                     
 ******************************************************************************
->> Linked Mon Aug 28 04:10:56 2023
+>> Linked Tue Aug 29 03:35:05 2023
 
 OUTPUT FILE NAME:   <Project_1.out>
-ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000f4d
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000f61
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  00000f8c  0003f074  R  X
+  FLASH                 00000000   00040000  00000fa0  0003f060  R  X
   SRAM                  20000000   00008000  00000200  00007e00  RW X
 
 
@@ -19,9 +19,9 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00000f8c   00000f8c    r-x
+00000000    00000000    00000fa0   00000fa0    r-x
   00000000    00000000    0000026c   0000026c    r-- .intvecs
-  0000026c    0000026c    00000d20   00000d20    r-x .text
+  0000026c    0000026c    00000d34   00000d34    r-x .text
 20000000    20000000    00000200   00000000    rw-
   20000000    20000000    00000200   00000000    rw- .stack
 
@@ -34,15 +34,14 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    0000026c     
                   00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
 
-.text      0    0000026c    00000d20     
-                  0000026c    000009dc     DIO.obj (.text)
-                  00000c48    00000260     TIMER.obj (.text)
-                  00000ea8    000000a2     main.obj (.text)
-                  00000f4a    00000002     --HOLE-- [fill = 0]
-                  00000f4c    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
-                  00000f78    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
-                  00000f84    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  00000f88    00000004                                   : exit.c.obj (.text:abort:abort)
+.text      0    0000026c    00000d34     
+                  0000026c    000009ec     DIO.obj (.text)
+                  00000c58    00000274     TIMER.obj (.text)
+                  00000ecc    00000094     main.obj (.text)
+                  00000f60    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  00000f8c    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000f98    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000f9c    00000004                                   : exit.c.obj (.text:abort:abort)
 
 .cinit     0    00000000    00000000     UNINITIALIZED
 
@@ -62,15 +61,15 @@ MODULE SUMMARY
        ------                         ----   -------   -------
     .\
        tm4c123gh6pm_startup_ccs.obj   12     620       0      
-       main.obj                       162    0         0      
+       main.obj                       148    0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         174    620       0      
+       Total:                         160    620       0      
                                                               
     .\MCAL\
-       DIO.obj                        2524   0         0      
-       TIMER.obj                      608    0         0      
+       DIO.obj                        2540   0         0      
+       TIMER.obj                      628    0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         3132   0         0      
+       Total:                         3168   0         0      
                                                               
     C:\ti\ccs1230\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        boot_cortex_m.c.obj            44     0         0      
@@ -81,26 +80,26 @@ MODULE SUMMARY
                                                               
        Stack:                         0      0         512    
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   3358   620       512    
+       Grand Total:                   3380   620       512    
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
 address   name                   
 -------   ----                   
-00000f89  C$$EXIT                
-00000a09  DIO_EnableInterrupt    
+00000f9d  C$$EXIT                
+00000a19  DIO_EnableInterrupt    
 000004b7  DIO_ReadPin            
 00000575  DIO_ReadPort           
 0000060d  DIO_SetPinDirection    
-000007cf  DIO_SetPortDirection   
-00000871  DIO_SetResistorMode    
+000007e1  DIO_SetPortDirection   
+00000881  DIO_SetResistorMode    
 0000044b  DIO_WritePORT          
 000002d9  DIO_WritePin           
 0000026d  DIO_init               
-00000f79  ResetISR               
-00000c49  Timer_PWM_Config       
-00000e35  Timer_PWM_setDutyCycle 
+00000f8d  ResetISR               
+00000c59  Timer_PWM_Config       
+00000e59  Timer_PWM_setDutyCycle 
 20000200  __STACK_END            
 00000200  __STACK_SIZE           
 20000200  __STACK_TOP            
@@ -114,13 +113,13 @@ UNDEFED   __mpu_init
 20000000  __stack                
 20000000  __start___llvm_prf_cnts
 20000000  __stop___llvm_prf_cnts 
-00000f4d  _c_int00_noinit_noargs 
-00000f85  _system_pre_init       
-00000f89  abort                  
+00000f61  _c_int00_noinit_noargs 
+00000f99  _system_pre_init       
+00000f9d  abort                  
 ffffffff  binit                  
-00000f27  delay                  
+00000f3d  delay                  
 00000000  g_pfnVectors           
-00000ea9  main                   
+00000ecd  main                   
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -136,18 +135,18 @@ address   name
 000004b7  DIO_ReadPin            
 00000575  DIO_ReadPort           
 0000060d  DIO_SetPinDirection    
-000007cf  DIO_SetPortDirection   
-00000871  DIO_SetResistorMode    
-00000a09  DIO_EnableInterrupt    
-00000c49  Timer_PWM_Config       
-00000e35  Timer_PWM_setDutyCycle 
-00000ea9  main                   
-00000f27  delay                  
-00000f4d  _c_int00_noinit_noargs 
-00000f79  ResetISR               
-00000f85  _system_pre_init       
-00000f89  C$$EXIT                
-00000f89  abort                  
+000007e1  DIO_SetPortDirection   
+00000881  DIO_SetResistorMode    
+00000a19  DIO_EnableInterrupt    
+00000c59  Timer_PWM_Config       
+00000e59  Timer_PWM_setDutyCycle 
+00000ecd  main                   
+00000f3d  delay                  
+00000f61  _c_int00_noinit_noargs 
+00000f8d  ResetISR               
+00000f99  _system_pre_init       
+00000f9d  C$$EXIT                
+00000f9d  abort                  
 20000000  __stack                
 20000000  __start___llvm_prf_cnts
 20000000  __stop___llvm_prf_cnts 

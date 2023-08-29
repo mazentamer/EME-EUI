@@ -1,31 +1,45 @@
-/*
- * TIMER_Interface.h
+/**********************************************************************************************************************
+ *  FILE DESCRIPTION
+ *  -------------------------------------------------------------------------------------------------------------------
+ *       Author:  Mazen Tamer
+ *         File:  TIMER_Interface.h
+ *        Layer:  MCAL
+ *       Module:  TIMER_Interface
+ *      Version:  1.00
  *
- *  Created on: Aug 27, 2023
- *      Author: Mazen
- */
+ *  Description:  APIs for the utilization of timers for the TIVA
+ *
+ *********************************************************************************************************************/
 
 #ifndef MCAL_TIMER_INTERFACE_H_
 #define MCAL_TIMER_INTERFACE_H_
+
+/**********************************************************************************************************************
+ *  LIBRARIES NEEDED
+ *********************************************************************************************************************/
 
 #include "hw_TIMER.h"
 #include "Libraries/hw_gpio.h"
 #include "MCAL/DIO.h"
 
+/**********************************************************************************************************************
+ *  GLOBAL DATA TYPES AND STRUCTURES
+ *********************************************************************************************************************/
+
 typedef enum
 {
-    TIMER0,
-    TIMER1,
-    TIMER2,
-    TIMER3,
-    TIMER4,
-    TIMER5,
-    WTIMER0,
-    WTIMER1,
+    TIMER0 = 0,
+    TIMER1 = 1,
+    TIMER2 = 2,
+    TIMER3 = 3,
+    TIMER4 = 4,
+    TIMER5 = 5,
+    WTIMER0 = 6,
+    WTIMER1 = 7,
     WTIMER2 = 28,
-    WTIMER3,
-    WTIMER4,
-    WTIMER5
+    WTIMER3 = 29,
+    WTIMER4 = 30,
+    WTIMER5 = 31
 } Timer;
 
 typedef enum
@@ -110,8 +124,51 @@ typedef enum
     INVERTED
 } Timer_PWM_Inversion;
 
+/**********************************************************************************************************************
+ *  GLOBAL FUNCTION PROTOTYPES
+ *********************************************************************************************************************/
+
+/***************************************************************************************************************************
+* \Syntax          : void Timer_PWM_Config(Timer Timer_Num, Timer_GPIO_Port_One Timer_Port, Timer_GPIO_Pin_One Timer_Pin, TimerAB Timer_Letter, Timer_Edge Edge, Timer_Operation Operation, Timer_PWM_Inversion Inversion, uint16 intervalLoad);
+* \Description     : Initialize the timer and configure it to use the PWM capabilities
+*
+* \Sync\Async      : Synchronous
+* \Re-entrancy      : Non Reentrant
+* \Parameters (in) : Timer                  Specifies which timer to be initialized
+*                    Timer_GPIO_Port_One    Specifies the port that has the pin concerned with the timer
+*                    Timer_GPIO_Pin_One     Specifies the specific pin for the timer
+*                    TimerAB                Specifies whether to use Timer A, B, or utilize the concatenated mode
+*                    Timer_Edge             Specifies whether to use Edge-count or Edge-time modes
+*                    Timer_Operation        Specifies mode of operation (one-shot, periodic, etc..)
+*                    Timer_PWM_Inversion    Choose to invert the output behavior of the PWM or not
+*                    intervalLoad           Provide a load value for the PWM timer
+* \Parameters (out): None
+* \Return value:   : void
+***************************************************************************************************************************/
 
 void Timer_PWM_Config(Timer Timer_Num, Timer_GPIO_Port_One Timer_Port, Timer_GPIO_Pin_One Timer_Pin, TimerAB Timer_Letter, Timer_Edge Edge, Timer_Operation Operation, Timer_PWM_Inversion Inversion, uint16 intervalLoad);
+
+/**********************************************************************************************************************
+ *  GLOBAL FUNCTION PROTOTYPES
+ *********************************************************************************************************************/
+
+/***************************************************************************************************************************
+* \Syntax          : void Timer_PWM_setDutyCycle(Timer Timer_Num, TimerAB Timer_Letter, uint16 dutyCycle)
+* \Description     : Initialize the timer and configure it to use the PWM capabilities
+*
+* \Sync\Async      : Synchronous
+* \Re-entrancy      : Non Reentrant
+* \Parameters (in) : Timer                  Specifies which timer to be initialized
+*                    TimerAB                Specifies whether Timer A, B, or concatenated mode is to be used
+*                    dutyCycle              Specifies the duty cycle of the PWM
+* \Parameters (out): None
+* \Return value:   : void
+***************************************************************************************************************************/
+
 void Timer_PWM_setDutyCycle(Timer Timer_Num, TimerAB Timer_Letter, uint16 dutyCycle);
 
 #endif /* MCAL_TIMER_INTERFACE_H_ */
+
+/**********************************************************************************************************************
+ *  END OF FILE: TIMER_Interface.h
+ *********************************************************************************************************************/
