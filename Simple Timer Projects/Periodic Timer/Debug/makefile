@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS
+CG_TOOL_ROOT := C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -128,40 +128,27 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-Timer_Ex.out \
+Blink_LED_Task.out \
 
 EXE_OUTPUTS__QUOTED += \
-"Timer_Ex.out" \
-
-BIN_OUTPUTS += \
-Timer_Ex.hex \
-
-BIN_OUTPUTS__QUOTED += \
-"Timer_Ex.hex" \
+"Blink_LED_Task.out" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "Timer_Ex.out"
+	@$(MAKE) --no-print-directory -Onone "Blink_LED_Task.out"
 
 # Tool invocations
-Timer_Ex.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+Blink_LED_Task.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Timer_Ex.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/lib" -i"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Timer_Ex_linkInfo.xml" --rom_model -o "Timer_Ex.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --check_misra="all,-19.4" -z -m"Blink_LED_Task.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib" -i"C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Blink_LED_Task_linkInfo.xml" --rom_model -o "Blink_LED_Task.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
-	@echo ' '
-
-Timer_Ex.hex: $(EXE_OUTPUTS)
-	@echo 'Building secondary target: "$@"'
-	@echo 'Invoking: Arm Hex Utility'
-	"C:/ti/ccs1120/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armhex" --diag_wrap=off -o "Timer_Ex.hex" $(EXE_OUTPUTS__QUOTED)
-	@echo 'Finished building secondary target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
+	-$(RM) $(EXE_OUTPUTS__QUOTED)
 	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "APP\blink_led.obj" "MCAL\gpio.obj" "MCAL\timer.obj" 
 	-$(RM) "main.d" "tm4c123gh6pm_startup_ccs.d" "APP\blink_led.d" "MCAL\gpio.d" "MCAL\timer.d" 
 	-@echo 'Finished clean'

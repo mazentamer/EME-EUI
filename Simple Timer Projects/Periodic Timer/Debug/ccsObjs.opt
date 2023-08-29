@@ -1,1 +1,7 @@
-"./main.obj" "./tm4c123gh6pm_startup_ccs.obj" "./APP/blink_led.obj" "./MCAL/gpio.obj" "./MCAL/timer.obj" "../tm4c123gh6pm.cmd" -llibc.a 
+"./main.obj"
+"./tm4c123gh6pm_startup_ccs.obj"
+"./APP/blink_led.obj"
+"./MCAL/gpio.obj"
+"./MCAL/timer.obj"
+"../tm4c123gh6pm.cmd"
+-llibc.a
