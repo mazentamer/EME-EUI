@@ -1,0 +1,463 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.7                     
+******************************************************************************
+>> Linked Fri Sep 15 15:10:14 2023
+
+OUTPUT FILE NAME:   <Mega_Project.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000021c5
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  000022b6  0003dd4a  R  X
+  SRAM                  20000000   00008000  00000278  00007d88  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000022b8   000022b8    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00002014   00002014    r-x .text
+  00002280    00002280    00000006   00000006    r-- .const
+  00002288    00002288    00000030   00000030    r-- .cinit
+20000000    20000000    00000278   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+  20000200    20000200    00000064   00000000    rw- .data
+  20000264    20000264    00000014   00000000    rw- .bss
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00002014     
+                  0000026c    000007c4     GPIO.obj (.text)
+                  00000a30    000006d4     GPTM.obj (.text)
+                  00001104    00000304     tasks.obj (.text)
+                  00001408    00000298     LCD.obj (.text)
+                  000016a0    0000028c     ADC.obj (.text)
+                  0000192c    0000018c     Motor.obj (.text)
+                  00001ab8    00000174     PWM.obj (.text)
+                  00001c2c    000000f0     scheduler.obj (.text)
+                  00001d1c    000000e0     SysTick.obj (.text)
+                  00001dfc    000000e0     Ultrasonic.obj (.text)
+                  00001edc    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00001f78    00000088     Button.obj (.text)
+                  00002000    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.asm.obj (.text)
+                  0000207a    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  000020e2    0000005e     Delay.obj (.text)
+                  00002140    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00002184    00000040     main.obj (.text)
+                  000021c4    00000034     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  000021f8    00000030     LDR.obj (.text)
+                  00002228    0000001c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00002244    0000001a     Temperature.obj (.text)
+                  0000225e    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  0000226c    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00002278    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  0000227c    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.const     0    00002280    00000006     
+                  00002280    00000006     tasks.obj (.const:.string:$P$T0$1)
+
+.cinit     0    00002288    00000030     
+                  00002288    0000000c     (.cinit..data.load) [load image, compression = lzss]
+                  00002294    0000000c     (__TI_handler_table)
+                  000022a0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  000022a8    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.data      0    20000200    00000064     UNINITIALIZED
+                  20000200    00000050     scheduler.obj (.data:Glob_OsTasks)
+                  20000250    00000008     Ultrasonic.obj (.data)
+                  20000258    00000007     scheduler.obj (.data)
+                  2000025f    00000001     --HOLE--
+                  20000260    00000004     tasks.obj (.data)
+
+.bss       0    20000264    00000014     UNINITIALIZED
+                  20000264    00000004     GPTM.obj (.bss)
+                  20000268    00000004     SysTick.obj (.bss)
+                  2000026c    00000004     (.common:Glob_u32FinalVal)
+                  20000270    00000004     (.common:Glob_u32InitVal)
+                  20000274    00000001     (.common:Glob_u8ObstacleCounter)
+                  20000275    00000001     (.common:Glob_u8ObstacleState)
+                  20000276    00000001     (.common:Glob_u8ObstacleTaskFlag)
+                  20000277    00000001     (.common:counter)
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       main.obj                       64     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         76     620       0      
+                                                              
+    .\APP\
+       tasks.obj                      772    6         7      
+    +--+------------------------------+------+---------+---------+
+       Total:                         772    6         7      
+                                                              
+    .\GeneralFunctions\
+       Delay.obj                      94     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         94     0         0      
+                                                              
+    .\HAL\Button\
+       Button.obj                     136    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         136    0         0      
+                                                              
+    .\HAL\LCD\
+       LCD.obj                        664    0         1      
+    +--+------------------------------+------+---------+---------+
+       Total:                         664    0         1      
+                                                              
+    .\HAL\LDR\
+       LDR.obj                        48     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         48     0         0      
+                                                              
+    .\HAL\Motors\
+       Motor.obj                      396    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         396    0         0      
+                                                              
+    .\HAL\Temperature\
+       Temperature.obj                26     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         26     0         0      
+                                                              
+    .\HAL\Ultrasonic\
+       Ultrasonic.obj                 224    0         16     
+    +--+------------------------------+------+---------+---------+
+       Total:                         224    0         16     
+                                                              
+    .\MCAL\ADC\
+       ADC.obj                        652    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         652    0         0      
+                                                              
+    .\MCAL\GPIO\
+       GPIO.obj                       1988   0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         1988   0         0      
+                                                              
+    .\MCAL\GPTM\
+       GPTM.obj                       1748   0         4      
+    +--+------------------------------+------+---------+---------+
+       Total:                         1748   0         4      
+                                                              
+    .\MCAL\PWM\
+       PWM.obj                        372    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         372    0         0      
+                                                              
+    .\MCAL\SysTick\
+       SysTick.obj                    224    0         4      
+    +--+------------------------------+------+---------+---------+
+       Total:                         224    0         4      
+                                                              
+    .\OS\
+       scheduler.obj                  240    0         87     
+    +--+------------------------------+------+---------+---------+
+       Total:                         240    0         87     
+                                                              
+    C:\ti\ccs1230\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.asm.obj              156    0         0      
+       memset_t2.asm.obj              122    0         0      
+       copy_decompress_lzss.c.obj     104    0         0      
+       autoinit.c.obj                 68     0         0      
+       boot_cortex_m.c.obj            52     0         0      
+       copy_zero_init.c.obj           28     0         0      
+       copy_decompress_none.c.obj     14     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         552    0         0      
+                                                              
+       Stack:                         0      0         512    
+       Linker Generated:              0      48        0      
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   8212   674       631    
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 000022a8 records: 2, size/record: 8, table size: 16
+	.data: load addr=00002288, load size=0000000c bytes, run addr=20000200, run size=00000064 bytes, compression=lzss
+	.bss: load addr=000022a0, load size=00000008 bytes, run addr=20000264, run size=00000014 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00002294 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+00001817  ADC_u32ReadChannel            
+000016a1  ADC_vidInit                   
+00001fbb  Button_vidGetButtonValue      
+00001f79  Button_vidInit                
+0000227d  C$$EXIT                       
+000004d1  GPIO_u8ReadPin                
+0000026d  GPIO_vidInitPort              
+00000675  GPIO_vidInputPin              
+000005a5  GPIO_vidInputPinPullUp        
+000002e5  GPIO_vidOutputPin             
+00000849  GPIO_vidSetAltFunc            
+00000795  GPIO_vidTogglePin             
+000003e1  GPIO_vidWritePin              
+0000106d  GPTM_u32GetCurrentValue       
+00000a31  GPTM_vidInit                  
+0000105d  GPTM_vidSetCallbackFunction   
+20000258  Glob_TaskCounts               
+2000025a  Glob_TickCounts               
+2000025c  Glob_TimeCount                
+20000260  Glob_u16Difference            
+20000254  Glob_u32Distance              
+2000026c  Glob_u32FinalVal              
+20000270  Glob_u32InitVal               
+20000251  Glob_u8DistanceFlag           
+20000250  Glob_u8Flag                   
+20000274  Glob_u8ObstacleCounter        
+20000275  Glob_u8ObstacleState          
+20000276  Glob_u8ObstacleTaskFlag       
+20000262  Glob_u8Sw1                    
+20000263  Glob_u8Sw2                    
+2000025e  Glob_u8TickFlag               
+000015d9  LCD_vidClearScreen            
+00001409  LCD_vidInit                   
+00001591  LCD_vidMoveCursor             
+000014bb  LCD_vidSendNibbleCMD          
+000014f9  LCD_vidSendNibbleData         
+00001537  LCD_vidWriteChar              
+000015ef  LCD_vidWriteNumber            
+00001561  LCD_vidWriteString            
+00002209  LDR_vidGetLeftBright          
+00002219  LDR_vidGetRightBright         
+000021f9  LDR_vidInit                   
+00001997  MOTOR_vidBackward             
+0000195b  MOTOR_vidForward              
+0000192d  MOTOR_vidInit                 
+00001a87  MOTOR_vidSetSpeed             
+00001a4b  MOTOR_vidStop                 
+00001a0f  MOTOR_vidTurnLeft             
+000019d3  MOTOR_vidTurnRight            
+00001c2d  OS_Start                      
+00001ab9  PWM_vidInit                   
+00001b8d  PWM_vidSetDutyCycle           
+0000226d  ResetISR                      
+00001ddf  STK_vidHandler                
+00001dcf  STK_vidSetInterruptCallback   
+00001d55  STK_vidStartMS                
+00001d91  STK_vidStartSEC               
+00001d1d  STK_vidStartUS                
+00001dbd  STK_vidStopCounter            
+0000224f  Temperature_vidGetTemperature 
+00002245  Temperature_vidInit           
+000010b9  TimerA0_vid_Handler           
+00001e29  Ultrasonic_vidGetDistance     
+00001dfd  Ultrasonic_vidInit            
+00001e47  Ultrasonic_vidMeasureDistance 
+000010cd  WTimerA5_vid_Handler          
+20000200  __STACK_END                   
+00000200  __STACK_SIZE                  
+20000200  __STACK_TOP                   
+000022a8  __TI_CINIT_Base               
+000022b8  __TI_CINIT_Limit              
+00002294  __TI_Handler_Table_Base       
+000022a0  __TI_Handler_Table_Limit      
+00002141  __TI_auto_init_nobinit_nopinit
+0000207b  __TI_decompress_lzss          
+0000225f  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00002229  __TI_zero_init_nomemset       
+00002001  __aeabi_memclr                
+00002001  __aeabi_memclr4               
+00002001  __aeabi_memclr8               
+00001edd  __aeabi_memcpy                
+00001edd  __aeabi_memcpy4               
+00001edd  __aeabi_memcpy8               
+00002003  __aeabi_memset                
+00002003  __aeabi_memset4               
+00002003  __aeabi_memset8               
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+20000000  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+000021c5  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+00002279  _system_pre_init              
+0000227d  abort                         
+00001315  avoid_obstacles               
+ffffffff  binit                         
+00001121  button_scan                   
+20000277  counter                       
+00001c3d  create_task                   
+00001ea5  delay                         
+000020e3  delay_ms                      
+00002107  delay_us                      
+00000000  g_pfnVectors                  
+0000120f  lcd_display                   
+00001191  ldr_swing_car                 
+00002185  main                          
+00001edd  memcpy                        
+00002009  memset                        
+00001cd9  scheduler_start               
+00001105  tasks_modulesInit             
+00001c77  tasks_scheduler               
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  g_pfnVectors                  
+00000200  __STACK_SIZE                  
+0000026d  GPIO_vidInitPort              
+000002e5  GPIO_vidOutputPin             
+000003e1  GPIO_vidWritePin              
+000004d1  GPIO_u8ReadPin                
+000005a5  GPIO_vidInputPinPullUp        
+00000675  GPIO_vidInputPin              
+00000795  GPIO_vidTogglePin             
+00000849  GPIO_vidSetAltFunc            
+00000a31  GPTM_vidInit                  
+0000105d  GPTM_vidSetCallbackFunction   
+0000106d  GPTM_u32GetCurrentValue       
+000010b9  TimerA0_vid_Handler           
+000010cd  WTimerA5_vid_Handler          
+00001105  tasks_modulesInit             
+00001121  button_scan                   
+00001191  ldr_swing_car                 
+0000120f  lcd_display                   
+00001315  avoid_obstacles               
+00001409  LCD_vidInit                   
+000014bb  LCD_vidSendNibbleCMD          
+000014f9  LCD_vidSendNibbleData         
+00001537  LCD_vidWriteChar              
+00001561  LCD_vidWriteString            
+00001591  LCD_vidMoveCursor             
+000015d9  LCD_vidClearScreen            
+000015ef  LCD_vidWriteNumber            
+000016a1  ADC_vidInit                   
+00001817  ADC_u32ReadChannel            
+0000192d  MOTOR_vidInit                 
+0000195b  MOTOR_vidForward              
+00001997  MOTOR_vidBackward             
+000019d3  MOTOR_vidTurnRight            
+00001a0f  MOTOR_vidTurnLeft             
+00001a4b  MOTOR_vidStop                 
+00001a87  MOTOR_vidSetSpeed             
+00001ab9  PWM_vidInit                   
+00001b8d  PWM_vidSetDutyCycle           
+00001c2d  OS_Start                      
+00001c3d  create_task                   
+00001c77  tasks_scheduler               
+00001cd9  scheduler_start               
+00001d1d  STK_vidStartUS                
+00001d55  STK_vidStartMS                
+00001d91  STK_vidStartSEC               
+00001dbd  STK_vidStopCounter            
+00001dcf  STK_vidSetInterruptCallback   
+00001ddf  STK_vidHandler                
+00001dfd  Ultrasonic_vidInit            
+00001e29  Ultrasonic_vidGetDistance     
+00001e47  Ultrasonic_vidMeasureDistance 
+00001ea5  delay                         
+00001edd  __aeabi_memcpy                
+00001edd  __aeabi_memcpy4               
+00001edd  __aeabi_memcpy8               
+00001edd  memcpy                        
+00001f79  Button_vidInit                
+00001fbb  Button_vidGetButtonValue      
+00002001  __aeabi_memclr                
+00002001  __aeabi_memclr4               
+00002001  __aeabi_memclr8               
+00002003  __aeabi_memset                
+00002003  __aeabi_memset4               
+00002003  __aeabi_memset8               
+00002009  memset                        
+0000207b  __TI_decompress_lzss          
+000020e3  delay_ms                      
+00002107  delay_us                      
+00002141  __TI_auto_init_nobinit_nopinit
+00002185  main                          
+000021c5  _c_int00_noargs               
+000021f9  LDR_vidInit                   
+00002209  LDR_vidGetLeftBright          
+00002219  LDR_vidGetRightBright         
+00002229  __TI_zero_init_nomemset       
+00002245  Temperature_vidInit           
+0000224f  Temperature_vidGetTemperature 
+0000225f  __TI_decompress_none          
+0000226d  ResetISR                      
+00002279  _system_pre_init              
+0000227d  C$$EXIT                       
+0000227d  abort                         
+00002294  __TI_Handler_Table_Base       
+000022a0  __TI_Handler_Table_Limit      
+000022a8  __TI_CINIT_Base               
+000022b8  __TI_CINIT_Limit              
+20000000  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+20000200  __STACK_END                   
+20000200  __STACK_TOP                   
+20000250  Glob_u8Flag                   
+20000251  Glob_u8DistanceFlag           
+20000254  Glob_u32Distance              
+20000258  Glob_TaskCounts               
+2000025a  Glob_TickCounts               
+2000025c  Glob_TimeCount                
+2000025e  Glob_u8TickFlag               
+20000260  Glob_u16Difference            
+20000262  Glob_u8Sw1                    
+20000263  Glob_u8Sw2                    
+2000026c  Glob_u32FinalVal              
+20000270  Glob_u32InitVal               
+20000274  Glob_u8ObstacleCounter        
+20000275  Glob_u8ObstacleState          
+20000276  Glob_u8ObstacleTaskFlag       
+20000277  counter                       
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[117 symbols]

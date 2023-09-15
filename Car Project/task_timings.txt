@@ -1,0 +1,4 @@
+button_scan --> 5ms (9 us actual)
+lcd_display --> 70ms
+ldr_swing_car --> 10ms (17 us actual)
+avoid_obstacles --> 15ms (115 us actual)
