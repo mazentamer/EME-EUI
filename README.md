@@ -16,3 +16,6 @@ This repository is created to document the projects and assignments throughout t
 *  Hussein Ahmed (872)
 *  Mahmoud Emara (1010)
 *  Mazen Tamer (549)
+### Chat Application Project
+* Mahmoud Emara (1010)
+* Mazen Tamer (549)
